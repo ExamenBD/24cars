@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <label for="pet-select">Выберите бренд:</label>
+
+        <select name="pets" id="pet-select">
+            <option value="">--Please choose an option--</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+        </select>
+
+        <% using (Html.BeginForm("AddReseller", "Home", FormMethod.Post))
+        {%>
+        <table>
+            <tr>
+                <td>Ostan</td>
+                <td><%:Html.DropDownListFor(model => model.Reseller.OstanId, new SelectList((List<SelectListItem>)Model.Ostans, "Value", "Text"), "please Select")%></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><%:Html.TextBoxFor(model => model.Reseller.Name)%></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><%:Html.TextBoxFor(model => model.Reseller.Address)%></td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" value="Save" />
+        <% } %>
+</div>
+
